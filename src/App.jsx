@@ -1,3 +1,9 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { Navbar } from './components/Navbar';
+import { Login } from './components/Login';
+import { Signup } from './components/Sigup';
+import Problems from './components/Problems';
 /*
  * Temporary problems array schema
  */
@@ -8,7 +14,7 @@ const problems = [{
 },{
     title: "201. Bitwise AND of Numbers Range",
     difficulty: "Medium",
-    acceptance: "412%"
+    acceptance: "41.2%"
 },
     {
         title: "202. Happy Number",
@@ -31,10 +37,20 @@ function App() {
        /problems/:problem_slug - A single problem page
      */
 
+
     return (
-    <div>
-        Finish the assignment! Look at the comments in App.jsx as a starting point
-    </div>
+        <>
+    <BrowserRouter>
+        <Navbar/>
+        <Routes>
+            <Route path='/' element={<Login/>}/>
+            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/problemset/all' element={<Problems arr={problems}/>}/>
+
+        </Routes>
+
+    </BrowserRouter>
+        </>
   )
 }
 
@@ -56,4 +72,9 @@ function ProblemStatement(props) {
         </td>
     </tr>
 }
+
+
+
+
+
 export default App
